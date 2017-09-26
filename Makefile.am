@@ -864,6 +864,12 @@ fscache_la_SOURCES = src/fscache.c
 fscache_la_LDFLAGS = $(PLUGIN_LDFLAGS)
 endif
 
+pkglib_LTLIBRARIES += glusterfs.la
+glusterfs_la_SOURCES = src/glusterfs.c
+glusterfs_la_CPPFLAGS = $(AM_CPPFLAGS) -I/usr/include/glusterfs
+glusterfs_la_LDFLAGS = $(PLUGIN_LDFLAGS) -L/usr/lib64
+glusterfs_la_LIBADD = -lpthread -lglusterfs -lgfxdr -lgfrpc
+
 if BUILD_PLUGIN_GMOND
 pkglib_LTLIBRARIES += gmond.la
 gmond_la_SOURCES = src/gmond.c
